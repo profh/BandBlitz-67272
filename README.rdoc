@@ -1,0 +1,1 @@
+A basic Rails application used as a foundation to teach students how to implement basic authentication and authorization.

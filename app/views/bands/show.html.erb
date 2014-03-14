@@ -1,0 +1,44 @@
+<h1>
+  <%= @band.name %>
+
+<span class="options">
+	<!-- Other options go here, depending on user's access level -->
+  <%= link_to "View other bands", bands_path %>
+</span>
+</h1>
+<p>
+	<% if @band.photo_url.nil? || @band.photo_url.include?("missing") %>
+		<%= image_tag "missing.png" %>
+	<% else %>
+  	<%= image_tag @band.photo_url %>
+	<% end %>
+	<strong>Description:</strong>
+  <%= @band.description %>
+</p>
+<p class="clear"></p>
+<p>
+	<% unless @band.song_url.nil? %>
+		<%= link_to "Click here to download a music sample", @band.song_url %>
+	<% end %>
+	
+</p>
+<p>
+	<strong><%= "#{(@band.genres.size == 1) ? 'Band genre is:' : 'Band genres include:'}" %></strong>
+	<ul>
+		<% for genre in @band.genres  %>
+			<li><%= genre.name %></li>
+		<% end  %>
+	</ul>
+</p>
+<% unless @band.playing_next.blank? %>
+	<p>
+	  <strong>Playing next at:</strong>
+	  <%= @band.playing_next %>
+	</p>
+	<p>
+	  <strong>When playing next:</strong>
+	  <%= @band.when_playing_next.strftime("%b %e") %>
+	</p>
+<% end %>
+
+<!-- Comments about the band can be displayed here -->
