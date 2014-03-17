@@ -4,7 +4,7 @@ class Band < ActiveRecord::Base
   # relationships
   has_many :band_genres
   has_many :genres, :through => :band_genres
-  has_many :comments, :dependent => :destroy
+  # has_many :comments, :dependent => :destroy
 
   # scopes
   scope :alphabetical, -> { order('name') }
